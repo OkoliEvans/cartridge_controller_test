@@ -1,7 +1,7 @@
 use std::{collections::HashMap, vec};
 
 use account_sdk::{
-    artifacts::{CONTROLLERS, Version},
+    artifacts::{Version, CONTROLLERS, DEFAULT_CONTROLLER},
     controller::Controller,
     factory::ControllerFactory,
     provider::CartridgeJsonRpcProvider,
@@ -189,7 +189,7 @@ impl ControllerService {
         let salt = cairo_short_string_to_felt(&username)?;
 
         let factory = ControllerFactory::new(
-            CONTROLLERS[&Version::LATEST].hash,
+            DEFAULT_CONTROLLER.hash,
             chain_id,
             owner.clone(),
             provider,
